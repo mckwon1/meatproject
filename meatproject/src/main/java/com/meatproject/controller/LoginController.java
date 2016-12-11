@@ -10,6 +10,8 @@ public class LoginController {
 	@RequestMapping("login")
 	public String login() {
 		
+		//aa
+		
 		System.out.println("lgoin"); 
 		
 		return "/login";
