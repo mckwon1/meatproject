@@ -10,7 +10,7 @@ public class LoginController {
 	@RequestMapping("login")
 	public String login() {
 		
-		//aa
+		//aa 33
 		
 		System.out.println("lgoin"); 
 		
