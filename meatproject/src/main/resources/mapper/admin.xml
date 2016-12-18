@@ -5,7 +5,12 @@
 <mapper namespace="com.meatproject.dao.AdminDAO">
 
 	<select id="listMember" resultType="HashMap">
-		select * from tb_member
+		select 
+		seq,
+		user_name,
+		user_point,
+		concat(phone1, ' - ',phone2, ' - ', phone3) AS phone
+		from tb_member
 	</select>
 
 </mapper>

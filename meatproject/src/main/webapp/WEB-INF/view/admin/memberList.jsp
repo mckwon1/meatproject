@@ -9,13 +9,13 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"> </script>
-<!-- <script src="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"> </script> -->
 <h1>회원 목록</h1>
-	<table id="dataList">
+	<table id="dataList" width="100%">
 		<colgroup>
-		<col width="50px;">
+		<col width="10%">
 		<col width="20%">
 		<col width="50%">
+		<col width="20%">
 		</colgroup>
 		
 		<thead>
@@ -35,16 +35,20 @@
 $(function(){
 	
 	/* dataTable Start */
-	 $('#dataList').dataTable( {
+	var table = $('#dataList').DataTable( {
+			"processing": true,
 	        "ajax": '/admin/listMember',
+	        "info":     false,
         	 "columns": [
-                 { "data": "name" },
-                 { "data": "position" },
-                 { "data": "office" },
-                 { "data": "extn" },
+                 { "data": "seq" },
+                 { "data": "user_name" },
+                 { "data": "phone" },
+                 { "data": "user_point" },
              ]
 	    } );
-		
+	
+	
+	
 });
 </script>
 </html>
