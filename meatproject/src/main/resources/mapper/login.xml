@@ -8,4 +8,19 @@
     select * from tb_member
   </select>
  
+  <insert id="insertShop" parameterType="loginVO">
+  	INSERT INTO tb_shop (SHOP_NAME, SHOP_ID, SHOP_PW, SHOP_LEVEL) 
+  	VALUES ('admin', 'admin', #{password}, 'A')
+  </insert>
+  
+  <select id="selectUser" parameterType="String" resultType="loginVO">
+  	SELECT	shop_id 	 as id  
+  			, shop_pw	 as password
+  			, (CASE WHEN shop_level = 'A' THEN 'ROLE_ADMIN'
+  					ELSE 'ROLE_USER'
+  			END) as auth
+  	FROM	tb_shop
+  	WHERE	shop_id = #{shopId}
+  </select>
+  
 </mapper>
