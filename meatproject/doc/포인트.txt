@@ -1,9 +1,0 @@
--login.jsp = 관리자, 유저 구분
-
-1.관리자
--회원등록 = mewMember.jsp
--회원리스트 = memberList.jsp
--회원상세 = memberView.jsp
-
-2.유저
-- 유저포인드 = userPoing.jsp
