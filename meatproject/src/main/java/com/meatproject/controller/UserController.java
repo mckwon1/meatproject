@@ -32,7 +32,7 @@ public class UserController {
 	
 	//멤버 리스트
 	@RequestMapping("/memberList")
-	public String login() {
+	public String memberList() {
 		
 		return "/user/memberList";
 	}
@@ -46,7 +46,6 @@ public class UserController {
 		List<Map<String, String>> list = userService.listMember();
 		
 		map.put("data", list);
-		
 		return map;
 	}
 
