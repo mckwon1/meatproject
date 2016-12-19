@@ -1,6 +1,6 @@
 #ignore
 meatproject/.classpath
-meatproject/.setting/*
+meatproject/.settings/*
 meatproject/bin/*
 
 .classpath
@@ -10,5 +10,5 @@ bin/*
 .setting/**
 bin/**
 
-meatproject/.setting/**
+meatproject/.settings/**
 meatproject/bin/**
