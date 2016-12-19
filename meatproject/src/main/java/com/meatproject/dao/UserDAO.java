@@ -10,5 +10,7 @@ public interface UserDAO {
 
 	List<Map<String, String>> listMember(String id);
 
+	int newMemberInsert(Map<String, String> item);
+
 	
 }

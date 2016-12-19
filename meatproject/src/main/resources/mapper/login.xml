@@ -19,6 +19,7 @@
   			, (CASE WHEN shop_level = 'A' THEN 'ROLE_ADMIN'
   					ELSE 'ROLE_USER'
   			END) as auth
+  			, seq as sNum
   	FROM	tb_shop
   	WHERE	shop_id = #{shopId}
   </select>

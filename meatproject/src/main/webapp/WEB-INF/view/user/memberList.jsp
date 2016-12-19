@@ -7,8 +7,6 @@
 <title>memberList</title>
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"> </script>
 <jsp:include page="memberHeader.jsp"/>
 <h1>회원 목록</h1>
 	<table id="dataList" width="100%">
@@ -32,6 +30,7 @@
 	</table>
 </body>
 
+<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script>
 $(function(){
 	/* dataTable Start */

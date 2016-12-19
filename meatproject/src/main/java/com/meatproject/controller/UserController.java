@@ -59,5 +59,15 @@ public class UserController {
 		
 		return "/user/newMember";
 	}
+	
+	//멤버 가입등록
+	@RequestMapping("/newMemberInsert")
+	@ResponseBody
+	public Map<String, Integer> newMemberInsert(@RequestParam Map<String, String> item) {
+		CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		item.put("sNum", user.getLoginVO().getsNum());
+		
+		return userService.newMemberInsert(item);
+	}
 
 }

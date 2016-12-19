@@ -9,11 +9,32 @@
 		tm.seq,
 		tm.user_name,
 		tm.user_point,
-		concat(tm.phone1, ' - ', tm.phone2, ' - ', tm.phone3) AS phone
+		CONCAT(tm.phone1, ' - ', tm.phone2, ' - ', tm.phone3) AS phone
 		from meatdb.tb_shop ts
 		inner join meatdb.tb_member tm
 		on ts.seq = tm.shop_seq
 		where ts.shop_id = #{id}
 	</select>
+	
+	<insert id="newMemberInsert" parameterType="map">
+		insert into tb_member
+		(
+		shop_seq,
+		phone1,
+		phone2,
+		phone3,
+		user_name,
+		user_point
+		)
+		values
+		(
+		${sNum},
+		#{userPhon1},
+		#{userPhon2},
+		#{userPhon3},
+		#{userNm},
+		#{userPoint}
+		)
+	</insert>
 
 </mapper>

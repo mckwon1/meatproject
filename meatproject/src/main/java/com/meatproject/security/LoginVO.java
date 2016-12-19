@@ -8,6 +8,7 @@ public class LoginVO implements Serializable {
 	private String id;
     private String password;
     private String auth;
+    private String sNum;
     
     public LoginVO() {
         // TODO Auto-generated constructor stub
@@ -19,7 +20,15 @@ public class LoginVO implements Serializable {
         this.password = password;
     }
     
-    public String getId() {
+    public String getsNum() {
+		return sNum;
+	}
+
+	public void setsNum(String sNum) {
+		this.sNum = sNum;
+	}
+
+	public String getId() {
         return id;
     }
  
