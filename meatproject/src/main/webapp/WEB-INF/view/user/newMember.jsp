@@ -15,17 +15,17 @@
 	<table>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" name="userNm"></td>
+			<td colspan="3"><input type="text" name="userNm"></td>
 		</tr>
 		<tr>
 			<td>연락처</td>
-			<td><input type="text" name="userPhon1"></td>
-			<td><input type="text" name="userPhon2"></td>
-			<td><input type="text" name="userPhon3"></td>
+			<td><input type="text" name="userPhon1" id="userPhon1" maxlength="3">-</td>
+			<td><input type="text" name="userPhon2" id="userPhon2" maxlength="4">-</td>
+			<td><input type="text" name="userPhon3" id="userPhon3" maxlength="4"></td>
 		</tr>
 		<tr>
 			<td>포인트</td>
-			<td><input type="text" name="userPoint"></td>
+			<td colspan="3"><input type="text" name="userPoint" value="0"></td>
 		</tr>
 		<tr>
 			<td colspan="2"><input id="saveBtn" type="button" value="등록"></td>
@@ -37,7 +37,18 @@
 $(function(){
 	
 	$('#saveBtn').on('click', formSave);
-	
+	$('#userPhon1').on('keyup', function(){
+		if($('#userPhon1').val().length >= 3){
+			$('#userPhon2').focus();
+		}
+		
+	});
+	$('#userPhon2').on('keyup', function(){
+		if($('#userPhon2').val().length >= 4){
+			$('#userPhon3').focus();
+		}
+		
+	});
 	
 	
 });
