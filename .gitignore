@@ -2,3 +2,5 @@
 meatproject/.classpath
 meatproject/.setting/*
 meatproject/bin/*
+
+.classpath
