@@ -4,13 +4,16 @@
   
 <mapper namespace="com.meatproject.dao.UserDAO">
 
-	<select id="listMember" resultType="HashMap">
-		select 
-		seq,
-		user_name,
-		user_point,
-		concat(phone1, ' - ',phone2, ' - ', phone3) AS phone
-		from tb_member
+	<select id="listMember" resultType="HashMap" parameterType="String">
+		select
+		tm.seq,
+		tm.user_name,
+		tm.user_point,
+		concat(tm.phone1, ' - ', tm.phone2, ' - ', tm.phone3) AS phone
+		from meatdb.tb_shop ts
+		inner join meatdb.tb_member tm
+		on ts.seq = tm.shop_seq
+		where ts.shop_id = #{id}
 	</select>
 
 </mapper>

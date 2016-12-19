@@ -33,11 +33,10 @@
 
 <script>
 $(function(){
-	
 	/* dataTable Start */
 	var table = $('#dataList').DataTable( {
 			"processing": true,
-	        "ajax": '/user/listMember',
+	        "ajax": '/user/listMember/${userId}',
 	        "info":     false,
         	 "columns": [
                  { "data": "seq" },

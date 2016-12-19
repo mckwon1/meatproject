@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDAO {
 
-	List<Map<String, String>> listMember();
+	List<Map<String, String>> listMember(String id);
 
 	
 }

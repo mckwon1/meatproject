@@ -14,8 +14,8 @@ public class UserService {
 	@Autowired
 	private UserDAO userDAO;
 
-	public List<Map<String, String>> listMember() {
-		return userDAO.listMember();
+	public List<Map<String, String>> listMember(String id) {
+		return userDAO.listMember(id);
 	}
 	
 }
