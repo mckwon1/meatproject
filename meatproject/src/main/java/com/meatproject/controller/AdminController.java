@@ -17,6 +17,9 @@ public class AdminController {
     	System.out.println("auth = " + user.getLoginVO().getAuth());
     	
     	
+    	
+    	
+    	
 		return "admin";
 	}
 	
