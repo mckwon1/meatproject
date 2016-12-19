@@ -15,6 +15,8 @@ public class AdminController {
 		//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	System.out.println("auth = " + user.getLoginVO().getAuth());
+    	
+    	
 		return "admin";
 	}
 	
