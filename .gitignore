@@ -3,12 +3,4 @@ meatproject/.classpath
 meatproject/.settings/*
 meatproject/bin/*
 
-.classpath
-.setting/*
-bin/*
 
-.setting/**
-bin/**
-
-meatproject/.settings/**
-meatproject/bin/**
