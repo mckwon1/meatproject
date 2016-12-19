@@ -9,6 +9,7 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"> </script>
+<jsp:include page="memberHeader.jsp"/>
 <h1>회원 목록</h1>
 	<table id="dataList" width="100%">
 		<colgroup>
@@ -36,7 +37,7 @@ $(function(){
 	/* dataTable Start */
 	var table = $('#dataList').DataTable( {
 			"processing": true,
-	        "ajax": '/user/listMember/${userId}',
+	        "ajax": '/user/listMember',
 	        "info":     false,
         	 "columns": [
                  { "data": "seq" },

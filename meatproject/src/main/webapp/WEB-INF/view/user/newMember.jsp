@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>memberHeader</title>
 </head>
 <body>
+<jsp:include page="memberHeader.jsp"/>
+<h1>회원 가입</h1>
 
 </body>
 </html>

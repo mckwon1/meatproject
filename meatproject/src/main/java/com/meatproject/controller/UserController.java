@@ -30,7 +30,6 @@ public class UserController {
 		//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	System.out.println("auth = " + user.getLoginVO().getAuth());
-    	model.addAttribute("userId", user.getLoginVO().getId());
     	
         return "/user/memberList";
     }
@@ -43,17 +42,22 @@ public class UserController {
 	}
 	
 	//멤버 리스트 호출
-	@RequestMapping("/listMember/{id}")
+	@RequestMapping("/listMember")
 	@ResponseBody
-	public Map<String, Object> listMember(@PathVariable String id ) {
+	public Map<String, Object> listMember() {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		System.out.println("id @@@ : " + id);
-		
-		List<Map<String, String>> list = userService.listMember(id);
+		CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<Map<String, String>> list = userService.listMember(user.getLoginVO().getId());
 		
 		map.put("data", list);
 		return map;
+	}
+	
+	//멤버 가입
+	@RequestMapping("/newMember")
+	public String newMember() {
+		
+		return "/user/newMember";
 	}
 
 }
