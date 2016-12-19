@@ -34,9 +34,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("success", true);
 		if (strAuth.equals("ROLE_ADMIN")) {
-			map.put("returnUrl", "/admin.do");
+			map.put("returnUrl", "/admin/admin.do");
 		} else {
-			map.put("returnUrl", "/user.do");
+			map.put("returnUrl", "/user/user.do");
 		}
 
 		// {"success" : true, "returnUrl" : "..."}

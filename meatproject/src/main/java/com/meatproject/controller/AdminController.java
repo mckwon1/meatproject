@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.meatproject.security.CustomUserDetails;
 import com.meatproject.service.AdminService;
 
 @Controller
@@ -18,6 +20,14 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
+	@RequestMapping("/admin.do")
+	public String admin() {
+		//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	System.out.println("auth = " + user.getLoginVO().getAuth());
+		return "admin";
+	}
+	
 	@RequestMapping("memberList")
 	public String login() {
 		

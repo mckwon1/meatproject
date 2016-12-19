@@ -33,23 +33,6 @@ public class LoginController {
         return "login";
     }
     
-    //관리자 페이지
-    @RequestMapping(value = "admin.do")
-    public String admin(HttpSession session) {
-    	
-    	//User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	System.out.println("auth = " + user.getLoginVO().getAuth());
-    	
-        return "admin";
-    }
-    
-    //사용자 페이지
-    @RequestMapping(value = "user.do")
-    public String user(HttpSession session) {
-        return "user";
-    }
-     
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public void logout(HttpSession session) {
         CustomUserDetails userDetails = (CustomUserDetails)session.getAttribute("userLoginInfo");
