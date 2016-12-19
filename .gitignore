@@ -9,3 +9,6 @@ bin/*
 
 .setting/**
 bin/**
+
+meatproject/.setting/**
+meatproject/bin/**
