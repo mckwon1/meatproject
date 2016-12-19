@@ -37,7 +37,7 @@ $(function(){
 	/* dataTable Start */
 	var table = $('#dataList').DataTable( {
 			"processing": true,
-	        "ajax": '/admin/listMember',
+	        "ajax": '/user/listMember',
 	        "info":     false,
         	 "columns": [
                  { "data": "seq" },
