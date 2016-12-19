@@ -1,3 +1,4 @@
 #ignore
-.classpath
-.setting/*
+meatproject/.classpath
+meatproject/.setting/*
+meatproject/bin/*
