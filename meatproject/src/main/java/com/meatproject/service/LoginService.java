@@ -21,4 +21,6 @@ public class LoginService {
 	public int insertShop(LoginVO loginVO) {
 		return loginDAO.insertShop(loginVO);
 	}
+	
+	
 }

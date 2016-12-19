@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:cache="http://www.springframework.org/schema/cache"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+    
+    <context:annotation-config/>
     
     <context:component-scan base-package="com.meatproject">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
@@ -32,5 +35,22 @@
 		<property name="basePackage" value="com.meatproject.dao" />
 		<property name="annotationClass" value="org.springframework.stereotype.Repository"/>
 	</bean>
+	
+	<!-- ehcache start -->
+	<cache:annotation-driven cache-manager="cacheManager"/> 
+	
+	<!-- Custom Cache Key Generator 지정. 커스터마이징 없이 DefaultKeyGenerator 를 사용해도 무방 -->
+	<!-- <bean id="customKeyGenerator" class="com.dwuthk.practice.ehcache.generator.CustomKeyGenerator" /> -->
+	
+	<!-- Cache Manager 설정  -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+	    <property name="cacheManager">
+	        <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	            <property name="configLocation" value="classpath:spring/cache/ehcache.xml" />
+	            <property name="shared" value="true" />
+	        </bean>
+	    </property>
+	</bean>
+	<!-- ehcache end -->
 
 </beans>
