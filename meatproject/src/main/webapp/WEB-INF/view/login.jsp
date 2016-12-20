@@ -34,13 +34,13 @@ $(function() {
 		console.log($('#loginForm').serialize());
 		 $.ajax({
 	           type:"POST",
-	           url:"/loginProcess",
+	           url:"${pageContext.request.contextPath}/loginProcess",
 	           data : $('#loginForm').serialize(),
 	           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 	           success : function(data) {
 	        	  	console.log('1');
 	                 if (data.success) {
-	                	 location.href=data.returnUrl 
+	                	 location.href="${pageContext.request.contextPath}"+data.returnUrl 
 	                 } else {
 	                	 alert(data.message);
 	                 }

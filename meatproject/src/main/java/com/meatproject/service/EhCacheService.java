@@ -67,7 +67,7 @@ public class EhCacheService {
      */
     private Map generateMap(String param) {
 
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("long", random.nextLong());
 
         logger.info("## PARAM : {}", param);
