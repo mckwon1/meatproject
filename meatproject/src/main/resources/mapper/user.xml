@@ -14,6 +14,7 @@
 		inner join meatdb.tb_member tm
 		on ts.seq = tm.shop_seq
 		where ts.shop_id = #{id}
+		order by ts.seq
 	</select>
 	
 	<insert id="newMemberInsert" parameterType="map">
@@ -24,7 +25,9 @@
 		phone2,
 		phone3,
 		user_name,
-		user_point
+		user_point,
+		inc_date,
+		up_date
 		)
 		values
 		(
@@ -33,7 +36,9 @@
 		#{userPhon2},
 		#{userPhon3},
 		#{userNm},
-		#{userPoint}
+		#{userPoint},
+		now(),
+		now()
 		)
 	</insert>
 
