@@ -9,9 +9,8 @@
 <body>
 <jsp:include page="memberHeader.jsp"/>
 <h1>회원 목록</h1>
-	<table id="dataList" width="100%">
+	<table id="dataList" class="display" cellspacing="0" width="100%">
 		<colgroup>
-		<col width="10%">
 		<col width="20%">
 		<col width="50%">
 		<col width="20%">
@@ -19,7 +18,6 @@
 		
 		<thead>
 			<tr>
-				<th>No</th>
 				<th>이름</th>
 				<th>전화번호</th>
 				<th>포인트</th>
@@ -30,24 +28,41 @@
 	</table>
 </body>
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
-<script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css"/>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
+<style type="text/css">
+table tr td{text-align: center; }
+</style>
 <script>
 $(function(){
 	/* dataTable Start */
-	var table = $('#dataList').DataTable( {
+	var table = $('#dataList').DataTable({
 			"processing": true,
 	        "ajax": '/user/listMember',
 	        "info":     false,
         	 "columns": [
-                 { "data": "seq" },
                  { "data": "user_name" },
                  { "data": "phone" },
                  { "data": "user_point" },
-             ]
-	    } );
+             ],
+             "language": {
+                 "lengthMenu": "Show _MENU_",
+                 "zeroRecords": "테이터가 없습니다.",
+                 "search": "검색 :",
+                 "paginate": {
+                     "first":      "처음",
+                     "last":       "마지막",
+                     "next":       "다음",
+                     "previous":   "이전"
+                 },
+             }
+	});
 	
-	
+	$('#dataList tbody').on('click', 'tr', function(){
+	        var data = table.row( this ).data();
+	        location.href = "/user/memberView?id="+data.seq;
+	 });
 	
 });
 </script>

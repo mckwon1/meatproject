@@ -1,12 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>memberHeader</title>
 </head>
 <body>
+<jsp:include page="memberHeader.jsp"/>
+<h1>회원 정보 상세</h1>
+<table>
+	<tr>
+		<th>적립율</th>
+		<td>
+			<select id="pointReserve">
+				<option value="5">5%</option>
+				<option value="10">10%</option>
+				<option value="15">15%</option>
+				<option value="">직접</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<th>이름</th>
+		<td><input type="text" value="${user.user_name}"></td>
+	</tr>
+	<tr>
+		<th>전화번호</th>
+		<td><input type="number" value="${user.phone1}"></td>
+		<td><input type="number" value="${user.phone2}"></td>
+		<td><input type="number" value="${user.phone3}"></td>
+	</tr>
+	<tr>
+		<th>현재 포인트</th>
+		<td>${user.user_point}</td>
+	</tr>
+	<tr>
+		<th>적립 포인트</th>
+		<td><input type="number" id="newPoint" value="0"></td>
+	</tr>
+	<tr>
+		<th>사용 금액</th>
+		<td><input type="number" id="pay"></td>
+	</tr>
+	<tr>
+		<td><input type="button" value="등록" id="saveBtn"></td>
+	</tr>
+</table>
 
 </body>
+<script>
+$(function(){
+	//사용 금액 입력 적립금 적용 이벤트
+	$('#pay').on('keyup', evPoint1);
+	
+	//적립율 변경 이벤트
+	$('#pointReserve').on('change', evPoint2);
+	
+	//등록
+	$('#saveBtn').on('click', saveUser);
+	
+})
+
+function evPoint1(){
+	
+	var tem = $('#pointReserve').val();
+	
+	switch (tem) {
+	case "5" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.05); 
+		break;
+	case "10" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.1); 
+		break;
+	case "15" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.15); 
+		break;
+	}
+}
+
+function evPoint2(){
+	
+	var tem = $('#pointReserve').val();
+	
+	switch (tem) {
+	case "5" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.05); 
+		break;
+	case "10" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.1); 
+		break;
+	case "15" :
+		$('#newPoint').val(Number($('#pay').val()) * 0.15); 
+		break;
+	default:
+		$('#newPoint').val('0');
+		break;
+	}
+	
+}
+
+function saveUser(){
+	alert('다음시간에...');
+// 	$.ajax({
+// 		  url: '/user/newMemberInsert',
+// 		  data: $('#newMember').serialize(),
+// 		  success: function(ob){
+// 			  alert(ob.result);
+// 		  },
+// 	});
+	
+}
+</script>
+
 </html>

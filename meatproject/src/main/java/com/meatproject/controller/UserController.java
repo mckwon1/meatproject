@@ -63,11 +63,21 @@ public class UserController {
 	//멤버 가입등록
 	@RequestMapping("/newMemberInsert")
 	@ResponseBody
-	public Map<String, Integer> newMemberInsert(@RequestParam Map<String, String> item) {
+	public Map<String, Object> newMemberInsert(@RequestParam Map<String, String> item) {
 		CustomUserDetails user = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		item.put("sNum", user.getLoginVO().getsNum());
 		
 		return userService.newMemberInsert(item);
+	}
+	
+	//멤버 상세
+	@RequestMapping("/memberView")
+	public String memberView(String id, Model model) {
+		Map<String, String> map = userService.selectUser(id);
+		
+		model.addAttribute("user", map);
+		
+		return "/user/memberView";
 	}
 
 }

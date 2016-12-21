@@ -22,16 +22,25 @@ public class UserService {
 	}
 
 	@Transactional
-	public Map<String, Integer> newMemberInsert(Map<String, String> item) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+	public Map<String, Object> newMemberInsert(Map<String, String> item) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		int flag = 0;
+		int userChk = 0; 
 		
-		flag = userDAO.newMemberInsert(item);
+		userChk = userDAO.oneMember(item);
 		
-		map.put("result", flag);
+		if(userChk != 0){
+			map.put("result", "이미 가입된 회원입니다.");
+		}else{
+			userDAO.newMemberInsert(item);
+			map.put("result", "등록완료");
+		}
 		
 		return map;
+	}
+
+	public Map<String, String> selectUser(String id) {
+		return userDAO.selectUser(id);
 	}
 	
 }

@@ -14,7 +14,16 @@
 		inner join meatdb.tb_member tm
 		on ts.seq = tm.shop_seq
 		where ts.shop_id = #{id}
-		order by ts.seq
+		order by tm.seq desc
+	</select>
+	
+	<select id="oneMember" parameterType="map" resultType="integer">
+		select
+		count(1)
+		from tb_member
+		where phone1 = #{userPhon1}
+		and phone2 = #{userPhon2}
+		and phone3 = #{userPhon3}
 	</select>
 	
 	<insert id="newMemberInsert" parameterType="map">
@@ -41,5 +50,12 @@
 		now()
 		)
 	</insert>
+	
+	<select id="selectUser" parameterType="String" resultType="map">
+		select
+		*
+		from tb_member
+		where seq = #{id} 
+	</select>
 
 </mapper>
