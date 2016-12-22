@@ -57,5 +57,32 @@
 		from tb_member
 		where seq = #{id} 
 	</select>
+	
+	<update id="updateUser" parameterType="map">
+		update tb_member set
+		phone1 = #{userPhon1},
+		phone2 = #{userPhon2},
+		phone3 = #{userPhon3},
+		user_name =#{user_name},
+		user_point = (select * from (select user_point+${newPoint} from tb_member where seq = #{seq}) as point),
+		up_date = now()
+		where seq = #{seq} 
+	</update>
 
+	<insert id="insertUserPoint" parameterType="map">
+		insert into tb_point_log
+		(
+		user_seq,
+		point,
+		pointPlusMinus,
+		inc_date
+		)
+		values
+		(
+		#{seq},
+		${newPoint},
+		'+',
+		now()
+		)
+	</insert>
 </mapper>

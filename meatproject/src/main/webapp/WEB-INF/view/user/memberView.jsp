@@ -10,45 +10,47 @@
 <body>
 <jsp:include page="memberHeader.jsp"/>
 <h1>회원 정보 상세</h1>
-<table>
-	<tr>
-		<th>적립율</th>
-		<td>
-			<select id="pointReserve">
-				<option value="5">5%</option>
-				<option value="10">10%</option>
-				<option value="15">15%</option>
-				<option value="">직접</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<th>이름</th>
-		<td><input type="text" value="${user.user_name}"></td>
-	</tr>
-	<tr>
-		<th>전화번호</th>
-		<td><input type="number" value="${user.phone1}"></td>
-		<td><input type="number" value="${user.phone2}"></td>
-		<td><input type="number" value="${user.phone3}"></td>
-	</tr>
-	<tr>
-		<th>현재 포인트</th>
-		<td>${user.user_point}</td>
-	</tr>
-	<tr>
-		<th>적립 포인트</th>
-		<td><input type="number" id="newPoint" value="0"></td>
-	</tr>
-	<tr>
-		<th>사용 금액</th>
-		<td><input type="number" id="pay"></td>
-	</tr>
-	<tr>
-		<td><input type="button" value="등록" id="saveBtn"></td>
-	</tr>
-</table>
-
+<form id="member">
+<input type="hidden" name="seq" value="${user.seq}">
+	<table>
+		<tr>
+			<th>적립율</th>
+			<td>
+				<select id="pointReserve" name="pointReserve">
+					<option value="5">5%</option>
+					<option value="10">10%</option>
+					<option value="15">15%</option>
+					<option value="">직접</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td><input type="text" value="${user.user_name}" name="user_name"></td>
+		</tr>
+		<tr>
+			<th>전화번호</th>
+			<td><input type="number" value="${user.phone1}" name="userPhon1" id="userPhon1" maxlength="3"></td>
+			<td><input type="number" value="${user.phone2}" name="userPhon2" id="userPhon2" maxlength="4"></td>
+			<td><input type="number" value="${user.phone3}" name="userPhon3" id="userPhon3" maxlength="4"></td>
+		</tr>
+		<tr>
+			<th>현재 포인트</th>
+			<td>${user.user_point}</td>
+		</tr>
+		<tr>
+			<th>적립 포인트</th>
+			<td><input type="number" id="newPoint" name="newPoint" value="0"></td>
+		</tr>
+		<tr>
+			<th>사용 금액</th>
+			<td><input type="number" id="pay" name="pay"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="등록" id="saveBtn"></td>
+		</tr>
+	</table>
+</form>
 </body>
 <script>
 $(function(){
@@ -60,6 +62,19 @@ $(function(){
 	
 	//등록
 	$('#saveBtn').on('click', saveUser);
+	
+	$('#userPhon1').on('keyup', function(){
+		if($('#userPhon1').val().length >= 3){
+			$('#userPhon2').focus();
+		}
+		
+	});
+	$('#userPhon2').on('keyup', function(){
+		if($('#userPhon2').val().length >= 4){
+			$('#userPhon3').focus();
+		}
+		
+	});
 	
 })
 
@@ -102,14 +117,13 @@ function evPoint2(){
 }
 
 function saveUser(){
-	alert('다음시간에...');
-// 	$.ajax({
-// 		  url: '/user/newMemberInsert',
-// 		  data: $('#newMember').serialize(),
-// 		  success: function(ob){
-// 			  alert(ob.result);
-// 		  },
-// 	});
+	$.ajax({
+		  url: '/user/memberUpdate',
+		  data: $('#member').serialize(),
+		  success: function(ob){
+			  alert(ob.result);
+		  },
+	});
 	
 }
 </script>

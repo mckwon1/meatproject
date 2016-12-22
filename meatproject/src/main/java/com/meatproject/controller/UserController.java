@@ -79,5 +79,13 @@ public class UserController {
 		
 		return "/user/memberView";
 	}
+	
+	//멤버 정보 수정
+	@RequestMapping("/memberUpdate")
+	@ResponseBody
+	public Map<String, Object> memberUpdate(@RequestParam Map<String, String> item) {
+		
+		return userService.memberUpdate(item);
+	}
 
 }

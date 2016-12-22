@@ -16,5 +16,9 @@ public interface UserDAO {
 
 	Map<String, String> selectUser(String id);
 
+	void updateUser(Map<String, String> item);
+
+	void insertUserPoint(Map<String, String> item);
+
 	
 }
