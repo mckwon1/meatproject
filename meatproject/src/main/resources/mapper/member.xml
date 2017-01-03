@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.meatproject.dao.MemberDAO">
+	
+	<select id="memberPoint" parameterType="map" resultType="Integer">
+		select user_point
+		from tb_member
+		where phone1 = #{phone1}
+		and phone2 = #{phone2}
+		and phone3 = #{phone3}
+	</select>
+	
+
+</mapper>
