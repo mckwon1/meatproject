@@ -10,7 +10,7 @@
  
   <insert id="insertShop" parameterType="loginVO">
   	INSERT INTO tb_shop (SHOP_NAME, SHOP_ID, SHOP_PW, SHOP_LEVEL) 
-  	VALUES ('admin', 'admin', #{password}, 'A')
+  	VALUES ('한글테스트', 'admin1111111', #{password}, 'A')
   </insert>
   
   <select id="selectUser" parameterType="String" resultType="loginVO">

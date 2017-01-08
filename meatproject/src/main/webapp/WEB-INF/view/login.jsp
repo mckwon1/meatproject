@@ -2,7 +2,11 @@
 <%@ page session="false" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-    <title>로그인페이지</title>  
+    <title>로그인페이지</title>
+    
+    <script src="<%=request.getContextPath() %>/js/jquery-3.1.1.min.js"></script>
+    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">  
+    <script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 </head>
 <body>
 <h2>로그인 </h2>
@@ -17,6 +21,21 @@
         <td>패스워드</td>
         <td><input type="text" id="shopPw" name="shopPw"></td>
     </tr>
+    
+    <tr height="40px">
+        <td>aaaa</td>
+        <td><input type="text" name="aaaa"></td>
+    </tr>
+    
+    <tr height="40px">
+        <td>aaaa</td>
+        <td><input type="text" name="aaaa"></td>
+    </tr>
+    
+    <tr height="40px">
+        <td>aaaa</td>
+        <td><input type="text" name="aaaa"></td>
+    </tr>
 </table>
 <table>
     <tr>
@@ -24,8 +43,6 @@
     </tr>
 </table>
 </form>
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 
 $(function() {
@@ -59,6 +76,22 @@ $(function() {
 	           }
 	     });
 
+	});
+	
+	
+	$('input[name=aaaa]').on('blur', function() {
+		
+		var aa = this;
+		var idx = $("input[name=aaaa]").index(aa);
+		
+		$('input[name=aaaa]').each(function(index) {
+			if (aa.value != '' && this.value == aa.value && idx != index) {
+				alert('값이 같음');
+				$(aa).val('');
+				$(aa).focus();	
+			}
+			
+		});
 	});
 });
 
